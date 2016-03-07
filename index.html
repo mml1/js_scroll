@@ -31,10 +31,20 @@
 			character_counter = 0;
 
 		function updateText()
-		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+		{	
+			var w; 
+		
+			if (words[word_counter][character_counter] == " "){ //Will have the cursor move when there is a space
+				w = "&nbsp;"
+				character_counter++;
+			} else {
+				w = words[word_counter][character_counter++];
+			}
+			el.innerHTML = el.innerHTML + w;
+	
 
-			if(character_counter == words[word_counter].length)
+
+			if(character_counter == words[word_counter].length+1)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
@@ -46,7 +56,7 @@
 			}
 		}
 
-		setInterval(updateText,300);
+		setInterval(updateText,1000);
 
 	</script>
 
